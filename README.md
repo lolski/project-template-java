@@ -7,6 +7,7 @@ Pre-configured template for Java development, containing the following basic com
 - CircleCI accounts
 - Bazel
   - (optional) RBE credential set up in CircleCI
+- (optional) [IntelliJ IDEA Bazel plugin](https://plugins.jetbrains.com/plugin/8609-bazel)
 
 # Usage
 ## Clone the repository:
