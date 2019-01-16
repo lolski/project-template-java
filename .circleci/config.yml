@@ -71,13 +71,17 @@ jobs:
     steps:
       - checkout
       - bazel_install
-      - run: echo test succeeded.
+      - bazel_add_rbe_credential
+      - bazel:
+          command: bazel test //...
   test-dists:
     machine: true
     steps:
       - checkout
       - bazel_install
-      - run: echo test succeeded.
+      - bazel_add_rbe_credential
+      - bazel:
+          command: bazel build //...
   test-dists-ubuntu:
     docker:
       - image: ubuntu:16.04
@@ -88,11 +92,14 @@ jobs:
       - run: apt-get install -y software-properties-common
       - run: add-apt-repository ppa:openjdk-r/ppa
       - run: apt-get update
-      - run: apt-get install -y sudo gcc build-essential openjdk-8-jdk unzip curl git
+      - run: apt-get install -y sudo gcc build-essential openjdk-8-jdk python-dev unzip curl git
 
       - checkout
       - bazel_install
-      - run: echo test succeeded.
+      - bazel_add_rbe_credential
+      - bazel:
+          command: bazel build //...
+
   test-dists-fedora:
     docker:
       - image: fedora:29
@@ -101,21 +108,26 @@ jobs:
     steps:
       - run: yum install -y http://opensource.wandisco.com/centos/7/git/x86_64/wandisco-git-release-7-2.noarch.rpm
       - run: yum update -y
-      - run: yum install -y sudo procps which gcc gcc-c++ java-1.8.0-openjdk-devel unzip git
+      - run: yum install -y sudo procps which gcc gcc-c++ java-1.8.0-openjdk-devel python-devel unzip git
       - checkout
       - bazel_install
-      - run: echo test succeeded.
+      - bazel_add_rbe_credential
+      - bazel:
+          command: bazel build //...
+
   deploy-github:
     machine: true
     steps:
       - checkout
       - bazel_install
+      - bazel_add_rbe_credential
       - run: echo test succeeded.
   deploy-all:
     machine: true
     steps:
       - checkout
       - bazel_install
+      - bazel_add_rbe_credential
       - run: echo test succeeded.
 
 commands:
