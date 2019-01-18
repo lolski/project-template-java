@@ -6,7 +6,7 @@ Pre-configured template for Java development, containing the following basic com
 - Java
 - CircleCI accounts
 - Bazel
-  - (optional) RBE credential set up in CircleCI
+  - (optional) Remote Build Execution credential set up in CircleCI
 - (optional) [IntelliJ IDEA Bazel plugin](https://plugins.jetbrains.com/plugin/8609-bazel)
 
 # Usage
@@ -32,7 +32,7 @@ Running tests locally:
 bazel test //...
 ```
 
-Running tests on RBE:
+Running tests with Remote Build Execution:
 ```
 bazel test //... --config=rbe
 ```
